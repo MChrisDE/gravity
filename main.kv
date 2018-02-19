@@ -1,0 +1,78 @@
+<Wall>
+    canvas:
+        Color:
+            rgb: (1, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+<Player>:
+    canvas:
+        Color:
+            rgb: (0, 0, 0)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgb: (1, 1, 1)
+        Rectangle:
+            pos: self.x+2, self.y+2
+            size: self.width - 4, self.height - 4
+    Label:
+        text: str(root.jumps)
+<Ground>:
+    canvas:
+        Color:
+            rgb: (0.949019608, 0.25490196078, 0.31372549019)
+        Rectangle:
+            pos: self.pos
+            size: ((self.width /2), self.height)
+        Color:
+            rgb: (0.003921568627451, 0.1803921568627451, 0.2509803921568627)
+        Rectangle:
+            pos: (self.x + (self.width / 2), self.y)
+            size: ((self.width /2), self.height)
+
+<Ceiling>:
+    canvas:
+        Color:
+            rgb: (0.9490196078431373, 0.2666666666666667,0.0196078431372549)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+<Game>:
+    canvas:
+        Color:
+            rgb: (0.0117647058823529,0.6509803921568627,0.6509803921568627)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    player: player
+    ground: ground
+    ceiling: ceiling
+    Ground:
+        id: ground
+        size_hint: (1, 0.13 )
+        pos: (0,0)
+    Ceiling:
+        id: ceiling
+        size_hint: (1, 0.13 )
+        pos_hint: {'x':0, 'top':1}
+        Button:
+            pos: (root.width*.75, root.height - self.height)
+            text: "quit"
+            on_press: app.stop()
+            size: (root.width*.25, root.height*0.13)
+            background_normal:''
+            background_color: (0.94, 0.267,0.0196, 1)
+            font_size: '30sp'
+        Button:
+            pos: (root.width*.5, root.height - self.height)
+            text: "restart"
+            on_press: root.reset()
+            size: (root.width*.25, root.height*0.13)
+            background_normal:''
+            background_color: (0.94, 0.267, 0.0196, 1)
+            font_size: '30sp'
+    Player
+        size_hint: (.036, .064)
+        id:player
